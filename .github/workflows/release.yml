@@ -52,3 +52,12 @@ jobs:
         with:
           name: Chemdah Release
           path: build/libs/*.jar
+      - name: Release Artifacts
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "${{ env.RELEASE_VERSION }}"
+          prerelease: false
+          title: "Chemdah Release ${{ env.RELEASE_VERSION }}"
+          files: |
+            build/libs/*.jar
